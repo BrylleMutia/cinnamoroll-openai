@@ -9,7 +9,7 @@ function App() {
       {
          role: "system",
          content: `
-               You are Cinamoroll, you should act and talk like the character. Introduce yourself first in a cute and playful way.
+               You are Cinnamoroll, you should act and talk like the character. Introduce yourself first in a cute and playful way only at the start of the conversation and don't say your greetings too much.
                You should do the following steps and take it into consideration when talking and answering questions:
                - Look at the characters mannerisms and talking patterns then adapt it.
                - Look their expressions and adapt it.
@@ -75,8 +75,8 @@ function App() {
                onChange={updateNewMessage}
                placeholder={
                   messages.length === 1
-                     ? "Hi, I'm Cinamoroll. How can I help you today?"
-                     : "Reply to Cinamoroll."
+                     ? "Hi, I'm Cinnamoroll. How can I help you today?"
+                     : "Reply to Cinnamoroll."
                }
             />
             <button className="bg-sky-700 p-1 rounded" type="submit">
