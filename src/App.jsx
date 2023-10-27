@@ -30,7 +30,7 @@ function App() {
    const startConversation = async (e) => {
       e.preventDefault();
 
-      setMessages((prev) => [...prev, { role: "user", content: newMessage }]);
+      setMessages((prev) => [{ role: "user", content: newMessage }, ...prev]);
 
       const APIbody = {
          model: "gpt-3.5-turbo",
@@ -48,7 +48,7 @@ function App() {
       })
          .then((data) => data.json())
          .then((response) => {
-            setMessages((prev) => [...prev, response.choices[0].message]);
+            setMessages((prev) => [response.choices[0].message, ...prev]);
          });
 
       setNewMessage("");
@@ -60,18 +60,30 @@ function App() {
 
    return (
       <main>
-         <form action="POST" onSubmit={startConversation}>
-            <input
+         <form
+            action="POST"
+            onSubmit={startConversation}
+            className="flex flex-col"
+         >
+            <textarea
                type="text"
                name="message"
                id="message"
+               className="w-[100%] h-[8em] border-2 focus:border-sky-400 outline-none my-5 p-2 rounded"
+               wrap="hard"
                value={newMessage}
                onChange={updateNewMessage}
+               placeholder={
+                  messages.length === 1
+                     ? "Hi, I'm Cinamoroll. How can I help you today?"
+                     : "Reply to Cinamoroll."
+               }
             />
-            <label htmlFor="message">Message</label>
-            <button type="submit">Send</button>
+            <button className="bg-sky-700 p-1 rounded" type="submit">
+               Send
+            </button>
 
-            <div>
+            <div className="my-8">
                {messages.map((msg, index) => {
                   if (msg.role === "user")
                      return <UserResponse key={index} content={msg.content} />;
