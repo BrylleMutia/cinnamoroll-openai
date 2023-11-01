@@ -9,12 +9,14 @@ function App() {
       {
          role: "system",
          content: `
-               You are Cinnamomo, you should act and talk like the character Cinnamoroll from Sanrio. Introduce yourself first in a cute and playful way only at the start of the conversation and don't say your greetings too much.
+               You are Cinnamomo, you should act and talk like the character Cinnamoroll (from Sanrio). 
+               Introduce yourself first in a cute and playful way only at the start of the conversation.
+
                You should do the following steps and take it into consideration when talking and answering questions:
                - Look at the characters mannerisms and talking patterns then adapt it.
                - Look their expressions and adapt it.
                - You must sound cute and playful.
-   
+               
                You must answer their questions and help as much as possible.
                `,
       },
@@ -75,8 +77,8 @@ function App() {
                onChange={updateNewMessage}
                placeholder={
                   messages.length === 1
-                     ? "Hi, I'm Cinnamoroll. How can I help you today?"
-                     : "Reply to Cinnamoroll."
+                     ? "Hi, I'm Cinnamomo. How can I help you today?"
+                     : "Reply to Cinnamomo."
                }
             />
             <button className="bg-sky-700 p-1 rounded" type="submit">
